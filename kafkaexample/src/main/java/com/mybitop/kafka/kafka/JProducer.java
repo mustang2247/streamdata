@@ -3,6 +3,7 @@ package com.mybitop.kafka.kafka;
 
 import java.util.Properties;
 
+import com.mybitop.kafka.conf.ConfigureAPI;
 import kafka.javaapi.producer.Producer;
 import kafka.producer.KeyedMessage;
 import kafka.producer.ProducerConfig;
@@ -19,7 +20,7 @@ public class JProducer extends Thread {
 
     public JProducer(String topic) {
         props.put("serializer.class", "kafka.serializer.StringEncoder");
-        props.put("metadata.broker.list", "10.211.55.18:9092");
+        props.put("metadata.broker.list", ConfigureAPI.KafkaProperties.BROKER_LIST);
         producer = new Producer<Integer, String>(new ProducerConfig(props));
         this.topic = topic;
     }
@@ -31,6 +32,7 @@ public class JProducer extends Thread {
             String msg = new String("Message_" + offsetNo);
             System.out.println("Send->[" + msg + "]");
             producer.send(new KeyedMessage<Integer, String>(topic, msg));
+            System.out.println("Send->[ok]");
             offsetNo++;
             try {
                 sleep(SLEEP);

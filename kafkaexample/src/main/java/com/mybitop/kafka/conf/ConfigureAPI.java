@@ -9,10 +9,10 @@ public class ConfigureAPI {
         /**
          * zookeeper
          */
-        public final static String ZK = "123.206.67.98:2181";
-        public final static String GROUP_ID = "test_group1";
+        public final static String ZK = "localhost:2181,localhost:2182,localhost:2183";
+        public final static String GROUP_ID = "test-group";
         public final static String TOPIC = "test2";
-        public final static String BROKER_LIST = "10.211.55.15:9092,10.211.55.17:9092,10.211.55.18:9092";
+        public final static String BROKER_LIST = "localhost:9092";
         public final static int BUFFER_SIZE = 64 * 1024;
         public final static int TIMEOUT = 20000;
         public final static int INTERVAL = 10000;
